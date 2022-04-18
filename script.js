@@ -23,6 +23,7 @@ searchBtn.addEventListener('click', function (e) {
     if (!searchInput.value) {
         searchInput.classList.add('search__input--alert');
         searchInput.focus();
+        searchBtn.blur();
         setTimeout(() => searchInput.classList.remove('search__input--alert'), 950);
     } else {
         fetch(API_URL + searchInput.value).then(response => {
