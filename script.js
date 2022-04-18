@@ -54,6 +54,7 @@ function displayNotFound() {
 </section>`;
     document.querySelector('.search').insertAdjacentHTML("afterend", html);
     document.querySelector('.result').classList.remove('hidden');
+    searchBtn.blur();
 }
 
 
@@ -76,7 +77,7 @@ function displayResult(data) {
                 <p><span class="result-card__followers">${followers}</span> Followers</p>
                 <p><span class="result-card__following">${following}</span> Following</p>
                 </div>
-                <p class="result-card__bio">${bio}</p>
+                <p class="result-card__bio">${bio??''}</p>
                 </div>
                 </div>
                 </div>
@@ -84,6 +85,7 @@ function displayResult(data) {
                 `;
     document.querySelector('.search').insertAdjacentHTML("afterend", html);
     document.querySelector('.result').classList.remove('hidden');
+    searchBtn.blur();
 }
 
 
