@@ -26,7 +26,8 @@ searchBtn.addEventListener('click', function (e) {
         setTimeout(() => searchInput.classList.remove('search__input--alert'), 950);
     } else {
         fetch(API_URL + searchInput.value).then(response => {
-            if (response.statusText === "Not Found") {
+            console.log(response);
+            if (!response.ok) {
                 displayNotFound();
             } else {
                 return response.json();
@@ -44,7 +45,7 @@ searchBtn.addEventListener('click', function (e) {
 function displayNotFound() {
     if (document.querySelector('.result')) {
         document.querySelector('.result').remove();
-    } 
+    }
     const html = `<section class="result bg-alert hidden">
 <div class="container">
 <div class="result-card">
@@ -63,7 +64,7 @@ function displayResult(data) {
     const { login: username, name: fullname, avatar_url, bio, following, followers, public_repos, hirable } = data;
     if (document.querySelector('.result')) {
         document.querySelector('.result').remove();
-    } 
+    }
     const html = `
     <section class="result hidden">
     <div class="container">
@@ -77,7 +78,7 @@ function displayResult(data) {
                 <p><span class="result-card__followers">${followers}</span> Followers</p>
                 <p><span class="result-card__following">${following}</span> Following</p>
                 </div>
-                <p class="result-card__bio">${bio??''}</p>
+                <p class="result-card__bio">${bio ?? ''}</p>
                 </div>
                 </div>
                 </div>
